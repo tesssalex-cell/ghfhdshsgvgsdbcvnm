@@ -39,11 +39,24 @@
     .hero-img{flex:1;display:flex;justify-content:center;align-items:center;z-index:2;}
     .hero-img img{width:100%;height:auto;max-width:440px;object-fit:contain;}
 
-    /* Coins */
-    .coin-top-left{position:absolute;top:6%;left:6%;width:190px;opacity:0.9;filter:drop-shadow(0 0 20px rgba(240,185,11,.4));}
-    .coin-above-character{position:absolute;top:0;right:10%;width:130px;opacity:0.85;filter:drop-shadow(0 0 8px rgba(240,185,11,.3));}
-    .coin-bottom{position:absolute;bottom:-5%;right:10%;width:550px;opacity:0.85;filter:drop-shadow(0 0 6px rgba(240,185,11,.25));z-index:0;}
-    .coin-bottom-left{position:absolute;bottom:-5%;left:25%;width:130px;opacity:0.8;filter:drop-shadow(0 0 4px rgba(240,185,11,.2));z-index:0;}
+    /* Coins with smooth animation */
+    @keyframes gentleFloat {
+      0% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-8px) rotate(1deg); }
+      100% { transform: translateY(0) rotate(0deg); }
+    }
+
+    .coin-top-left,
+    .coin-above-character,
+    .coin-bottom,
+    .coin-bottom-left {
+      animation: gentleFloat 8s ease-in-out infinite;
+    }
+
+    .coin-top-left{position:absolute;top:6%;left:6%;width:190px;opacity:0.9;filter:drop-shadow(0 0 20px rgba(240,185,11,.4));animation-delay:0s;}
+    .coin-above-character{position:absolute;top:0;right:10%;width:130px;opacity:0.85;filter:drop-shadow(0 0 8px rgba(240,185,11,.3));animation-delay:2s;}
+    .coin-bottom{position:absolute;bottom:-5%;right:10%;width:550px;opacity:0.85;filter:drop-shadow(0 0 6px rgba(240,185,11,.25));z-index:0;animation-delay:1s;}
+    .coin-bottom-left{position:absolute;bottom:-5%;left:25%;width:130px;opacity:0.8;filter:drop-shadow(0 0 4px rgba(240,185,11,.2));z-index:0;animation-delay:3s;}
 
     /* How to Buy */
     .section{padding:60px 0}
