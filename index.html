@@ -28,11 +28,14 @@
     .btn{background:var(--brand);color:#111;padding:10px 18px;border-radius:8px;font-weight:700;transition:.3s;cursor:pointer;}
     .btn:hover{opacity:.85;transform:translateY(-2px)}
 
+    .lang-btn{background:none;border:1px solid var(--brand);color:var(--brand);padding:8px 16px;border-radius:8px;font-weight:600;cursor:pointer;transition:.3s;}
+    .lang-btn:hover{background:var(--brand);color:#111}
+
     .hero{position:relative;display:flex;flex-wrap:wrap;align-items:center;gap:40px;padding:80px 0}
     .hero-text{flex:1;z-index:2;text-align:left;}
     .hero-text h1{font-size:3rem;line-height:1.1;font-weight:900}
     .hero-text h1 span{color:var(--brand)}
-    .hero-text p{color:var(--sub);margin-top:16px;font-size:1.05rem;max-width:480px}
+    .hero-text p{color:var(--sub);margin-top:16px;font-size:1.05rem;max-width:520px}
     .cta-buttons{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px;justify-content:flex-start;}
 
     /* Contract address with glow */
@@ -44,13 +47,13 @@
     .hero-img{flex:1;display:flex;justify-content:center;align-items:center;z-index:2}
     .hero-img img{width:100%;height:auto;max-width:440px;object-fit:contain}
 
+    /* Coins */
     @keyframes gentleFloat{0%{transform:translateY(0) rotate(0)}50%{transform:translateY(-8px) rotate(1deg)}100%{transform:translateY(0) rotate(0)}}
-    .coin-top-left,.coin-above-character,.coin-bottom,.coin-bottom-left{animation:gentleFloat 8s ease-in-out infinite}
-
-    .coin-top-left{position:absolute;top:6%;left:6%;width:190px;opacity:.9;filter:drop-shadow(0 0 20px rgba(240,185,11,.4));animation-delay:0s}
-    .coin-above-character{position:absolute;top:0;right:10%;width:130px;opacity:.85;filter:drop-shadow(0 0 8px rgba(240,185,11,.3));animation-delay:2s}
-    .coin-bottom{position:absolute;bottom:-5%;right:10%;width:550px;opacity:.85;filter:drop-shadow(0 0 6px rgba(240,185,11,.25));z-index:0;animation-delay:1s}
-    .coin-bottom-left{position:absolute;bottom:-5%;left:25%;width:130px;opacity:.8;filter:drop-shadow(0 0 4px rgba(240,185,11,.2));z-index:0;animation-delay:3s}
+    .coin{position:absolute;filter:drop-shadow(0 0 18px rgba(240,185,11,.35));animation:gentleFloat 8s ease-in-out infinite}
+    .coin.tl{top:6%;left:6%;width:190px;animation-delay:0s}
+    .coin.above{top:0;right:10%;width:130px;animation-delay:2s}
+    .coin.br{bottom:-5%;right:10%;width:550px;animation-delay:1s;z-index:0}
+    .coin.bl{bottom:-5%;left:25%;width:130px;animation-delay:3s;z-index:0}
 
     /* Sections */
     .section{padding:60px 0}
@@ -77,24 +80,28 @@
 <body>
   <header class="container header">
     <div class="logo">BNBEAN</div>
-    <a href="https://pancakeswap.finance/swap" target="_blank" rel="noopener noreferrer" class="btn">BUY NOW</a>
+    <div style="display:flex;gap:10px;align-items:center;">
+      <button class="lang-btn" id="lang-toggle">中文</button>
+      <a href="https://pancakeswap.finance/swap" target="_blank" rel="noopener noreferrer" class="btn" id="buy-btn">BUY NOW</a>
+    </div>
   </header>
 
   <main>
     <section class="container hero" id="buy">
-      <img src="assets/coin1.png" alt="coin" class="coin-top-left" />
-      <img src="assets/coin2.png" alt="coin" class="coin-above-character" />
+      <!-- Coins & character restored -->
+      <img src="assets/coin1.png" alt="coin" class="coin tl" />
+      <img src="assets/coin2.png" alt="coin" class="coin above" />
 
       <div class="hero-text">
-        <h1>THE HOTTEST <span>MEME</span> ON <span>BINANCE</span></h1>
-        <p>BNBEAN — a clean and balanced meme coin with minimalist aesthetics and smooth design harmony.</p>
+        <h1 id="hero-title">THE HOTTEST <span>MEME</span> ON <span>BINANCE</span></h1>
+        <p id="hero-desc">BNBEAN — a clean and balanced meme coin with minimalist aesthetics and smooth design harmony.</p>
         <div class="cta-buttons">
-          <button class="btn" id="copy-ca" type="button" aria-label="Copy contract address">CA</button>
-          <a class="btn" href="https://t.me/BNBEAN" target="_blank" rel="noopener noreferrer">Telegram</a>
-          <a class="btn" href="https://dexscreener.com/" target="_blank" rel="noopener noreferrer">Dexscreener</a>
-          <a class="btn" href="https://twitter.com/BNBEAN" target="_blank" rel="noopener noreferrer">Twitter</a>
+          <button class="btn" id="copy-ca" type="button">CA</button>
+          <a class="btn" id="btn-telegram" href="https://t.me/BNBEAN" target="_blank" rel="noopener">Telegram</a>
+          <a class="btn" id="btn-dex" href="https://dexscreener.com/" target="_blank" rel="noopener">Dexscreener</a>
+          <a class="btn" id="btn-twitter" href="https://twitter.com/BNBEAN" target="_blank" rel="noopener">Twitter</a>
         </div>
-        <div class="contract-address" id="ca-address">Contract: <span>0x0000000000000000000000000000000000000000</span></div>
+        <div class="contract-address" id="ca-address"><span id="label-contract">Contract</span>: <span id="ca-value">0x0000000000000000000000000000000000000000</span></div>
       </div>
 
       <div class="hero-img">
@@ -104,31 +111,31 @@
 
     <!-- HOW TO BUY -->
     <section class="container section" id="how-to-buy">
-      <h2>How to Buy BNBEAN</h2>
-      <p class="desc">Follow these simple steps to join the BNBEAN community — smooth and easy.</p>
+      <h2 id="htb-title">How to Buy BNBEAN</h2>
+      <p class="desc" id="htb-desc">Follow these simple steps to join the BNBEAN community — smooth and easy.</p>
       <div class="steps">
         <div class="step">
-          <h3>1. Install a Wallet</h3>
-          <p>Download <strong>MetaMask</strong> or <strong>Trust Wallet</strong> for browser or mobile.</p>
+          <h3 id="s1-title">1. Install a Wallet</h3>
+          <p id="s1-text">Download <strong>MetaMask</strong> or <strong>Trust Wallet</strong> for browser or mobile.</p>
         </div>
         <div class="step">
-          <h3>2. Add BNB</h3>
-          <p>Purchase <strong>BNB</strong> on Binance and send it to your wallet.</p>
+          <h3 id="s2-title">2. Add BNB</h3>
+          <p id="s2-text">Purchase <strong>BNB</strong> on Binance and send it to your wallet.</p>
         </div>
         <div class="step">
-          <h3>3. Connect to DEX</h3>
-          <p>Visit <strong>PancakeSwap</strong>, select <strong>BNB / BNBEAN</strong>, and connect your wallet.</p>
+          <h3 id="s3-title">3. Connect to DEX</h3>
+          <p id="s3-text">Visit <strong>PancakeSwap</strong>, select <strong>BNB / BNBEAN</strong>, and connect your wallet.</p>
         </div>
         <div class="step">
-          <h3>4. Swap & Confirm</h3>
-          <p>Enter the amount, click “Swap,” and confirm — you’re in!</p>
+          <h3 id="s4-title">4. Swap & Confirm</h3>
+          <p id="s4-text">Enter the amount, click “Swap,” and confirm — you’re in!</p>
         </div>
       </div>
     </section>
 
     <!-- MEME GALLERY -->
     <section class="container section" id="memes">
-      <h2>Meme Gallery</h2>
+      <h2 id="memes-title">Meme Gallery</h2>
       <div class="gallery-wrapper">
         <div class="gallery">
           <img src="assets/memes/meme1.jpg" alt="Meme 1" />
@@ -145,43 +152,95 @@
   </main>
 
   <footer>
-    <p>© <span id="year"></span> BNBEAN. All rights reserved.</p>
-    <img src="assets/coin3.png" alt="coin" class="coin-bottom" />
-    <img src="assets/coin2.png" alt="coin" class="coin-bottom-left" />
+    <p id="footer-text">© <span id="year"></span> BNBEAN. All rights reserved.</p>
+    <img src="assets/coin3.png" alt="coin" class="coin br" />
+    <img src="assets/coin2.png" alt="coin" class="coin bl" />
   </footer>
 
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
+    // Copy CA
     (function(){
       const btn = document.getElementById('copy-ca');
-      const caText = document.getElementById('ca-address');
-      if(!btn || !caText) return;
-      const CONTRACT_ADDRESS = '0x0000000000000000000000000000000000000000';
-
-      async function copyCA(){
-        try{
-          await navigator.clipboard.writeText(CONTRACT_ADDRESS);
-          const original = btn.textContent;
-          btn.textContent = 'Copied!';
-          btn.setAttribute('aria-live','polite');
-          btn.disabled = true;
-          setTimeout(()=>{ btn.textContent = original; btn.disabled = false; }, 1200);
-        }catch(err){
-          const ta = document.createElement('textarea');
-          ta.value = CONTRACT_ADDRESS;
-          document.body.appendChild(ta);
-          ta.select();
-          try { document.execCommand('copy'); } catch(e){}
-          document.body.removeChild(ta);
-          const original = btn.textContent;
-          btn.textContent = 'Copied!';
-          setTimeout(()=>{ btn.textContent = original; }, 1200);
-        }
-      }
-
-      btn.addEventListener('click', copyCA);
+      const ca = document.getElementById('ca-value').textContent.trim();
+      btn.addEventListener('click', async ()=>{
+        try{ await navigator.clipboard.writeText(ca); const t=btn.textContent; btn.textContent='Copied!'; setTimeout(()=>btn.textContent=t,1000); }
+        catch(e){ const ta=document.createElement('textarea'); ta.value=ca; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta); const t=btn.textContent; btn.textContent='Copied!'; setTimeout(()=>btn.textContent=t,1000); }
+      });
     })();
+
+    // i18n toggle (EN <-> ZH) for ALL visible texts
+    const langBtn = document.getElementById('lang-toggle');
+    let currentLang = 'en';
+
+    const T = {
+      en: {
+        buy: 'BUY NOW',
+        hero_title: 'THE HOTTEST <span>MEME</span> ON <span>BINANCE</span>',
+        hero_desc: 'BNBEAN — a clean and balanced meme coin with minimalist aesthetics and smooth design harmony.',
+        ca_label: 'Contract',
+        btn_ca: 'CA',
+        btn_tg: 'Telegram',
+        btn_dex: 'Dexscreener',
+        btn_tw: 'Twitter',
+        htb_title: 'How to Buy BNBEAN',
+        htb_desc: 'Follow these simple steps to join the BNBEAN community — smooth and easy.',
+        s1_title: '1. Install a Wallet', s1_text: 'Download <strong>MetaMask</strong> or <strong>Trust Wallet</strong> for browser or mobile.',
+        s2_title: '2. Add BNB', s2_text: 'Purchase <strong>BNB</strong> on Binance and send it to your wallet.',
+        s3_title: '3. Connect to DEX', s3_text: 'Visit <strong>PancakeSwap</strong>, select <strong>BNB / BNBEAN</strong>, and connect your wallet.',
+        s4_title: '4. Swap & Confirm', s4_text: 'Enter the amount, click “Swap,” and confirm — you’re in!',
+        memes_title: 'Meme Gallery',
+        footer: '© <span id="year"></span> BNBEAN. All rights reserved.',
+        langBtn: '中文'
+      },
+      zh: {
+        buy: '立即购买',
+        hero_title: '币安上最火热的<span>梗币</span>',
+        hero_desc: 'BNBEAN —— 一个简约而平衡的梗币，拥有极简美学与流畅设计。',
+        ca_label: '合约地址',
+        btn_ca: '合约',
+        btn_tg: '电报群',
+        btn_dex: 'Dexscreener',
+        btn_tw: '推特',
+        htb_title: '如何购买 BNBEAN',
+        htb_desc: '按照以下步骤即可加入 BNBEAN 社区，简单快捷。',
+        s1_title: '1. 安装钱包', s1_text: '下载 <strong>MetaMask</strong> 或 <strong>Trust Wallet</strong>（浏览器/手机）。',
+        s2_title: '2. 充值 BNB', s2_text: '在 Binance 购买 <strong>BNB</strong> 并转入你的钱包。',
+        s3_title: '3. 连接去中心化交易所', s3_text: '打开 <strong>PancakeSwap</strong>，选择 <strong>BNB / BNBEAN</strong>，并连接钱包。',
+        s4_title: '4. 交换并确认', s4_text: '输入数量，点击“Swap”并确认交易。',
+        memes_title: '梗图画廊',
+        footer: '© <span id="year"></span> BNBEAN. 保留所有权利。',
+        langBtn: 'EN'
+      }
+    };
+
+    function applyLang(lang){
+      const x=T[lang];
+      document.getElementById('buy-btn').textContent = x.buy;
+      document.getElementById('hero-title').innerHTML = x.hero_title;
+      document.getElementById('hero-desc').innerHTML = x.hero_desc;
+      document.getElementById('label-contract').textContent = x.ca_label;
+      document.getElementById('copy-ca').textContent = x.btn_ca;
+      document.getElementById('btn-telegram').textContent = x.btn_tg;
+      document.getElementById('btn-dex').textContent = x.btn_dex;
+      document.getElementById('btn-twitter').textContent = x.btn_tw;
+      document.getElementById('htb-title').textContent = x.htb_title;
+      document.getElementById('htb-desc').innerHTML = x.htb_desc;
+      document.getElementById('s1-title').textContent = x.s1_title; document.getElementById('s1-text').innerHTML = x.s1_text;
+      document.getElementById('s2-title').textContent = x.s2_title; document.getElementById('s2-text').innerHTML = x.s2_text;
+      document.getElementById('s3-title').textContent = x.s3_title; document.getElementById('s3-text').innerHTML = x.s3_text;
+      document.getElementById('s4-title').textContent = x.s4_title; document.getElementById('s4-text').innerHTML = x.s4_text;
+      document.getElementById('memes-title').textContent = x.memes_title;
+      document.getElementById('footer-text').innerHTML = x.footer;
+      langBtn.textContent = x.langBtn;
+      document.documentElement.lang = (lang==='zh'?'zh-Hans':'en');
+    }
+
+    langBtn.addEventListener('click',()=>{
+      currentLang = currentLang==='en'?'zh':'en';
+      applyLang(currentLang);
+    });
   </script>
 </body>
 </html>
