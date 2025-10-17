@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BNBEAN — Meme Coin</title>
+  <meta name="description" content="BNBEAN — a minimalist and fast meme coin landing page with a clean design, Telegram, Dexscreener, Twitter, and meme gallery." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0a0a0b;
+      --text:#eaeaf0;
+      --sub:#b7b7c2;
+      --brand:#f0b90b;
+      --brand-2:#ffce1f;
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{background-color:var(--bg);color:var(--text);font-family:Manrope,system-ui,sans-serif;overflow-x:hidden;position:relative;}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+    .container{width:min(1200px,92vw);margin-inline:auto;position:relative;z-index:2}
+    .header{display:flex;justify-content:space-between;align-items:center;padding:20px 0}
+    .logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.3rem}
+    .btn{background:var(--brand);color:#111;padding:12px 20px;border-radius:10px;font-weight:700;transition:0.2s}
+    .btn:hover{transform:translateY(-2px);background:var(--brand-2)}
+    .hero{position:relative;display:flex;flex-wrap:wrap;align-items:center;gap:40px;padding:60px 0;overflow:hidden}
+    .hero-text{flex:1;z-index:2}
+    .hero-text h1{font-size:3rem;line-height:1.1;font-weight:900}
+    .hero-text h1 span{color:var(--brand)}
+    .hero-text p{color:var(--sub);margin-top:16px;font-size:1.1rem}
+    .cta-buttons{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+    .hero-img{flex:1;display:flex;justify-content:center;align-items:center;z-index:2;position:relative}
+    .hero-img img{width:100%;height:auto;max-width:450px;object-fit:contain;background:none;border:none;box-shadow:none;z-index:2;position:relative}
+
+    /* Static coins */
+    .coin-top-left{position:absolute;top:5%;left:5%;width:220px;opacity:0.95;filter:drop-shadow(0 0 25px rgba(200,155,10,.55));z-index:1;}
+    .coin-above-character{position:absolute;top:-1%;right:8%;width:150px;opacity:0.9;filter:drop-shadow(0 0 10px rgba(120,100,5,.4));z-index:3;}
+    .coin-bottom{position:absolute;bottom:-5%;right:12%;width:600px;opacity:0.9;filter:drop-shadow(0 0 10px rgba(120,100,5,.3));z-index:0;}
+    .coin-bottom-left{position:absolute;bottom:-5%;left:28%;width:140px;opacity:0.9;filter:drop-shadow(0 0 4px rgba(180,140,8,.25));z-index:0;}
+
+    .section{padding:60px 0}
+    .section h2{font-size:2rem;margin-bottom:20px}
+
+    /* Scrollable meme gallery */
+    .gallery-section {margin-bottom:120px;}
+    .gallery-wrapper {overflow:hidden;white-space:nowrap;padding-bottom:10px;}
+    .gallery{display:inline-flex;gap:14px;animation:scroll 25s linear infinite;}
+    .gallery img{width:250px;height:250px;border-radius:12px;object-fit:cover;flex-shrink:0;}
+
+    @keyframes scroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    footer{padding:60px 0;text-align:center;color:var(--sub);position:relative;z-index:2;}
+  </style>
+</head>
+<body>
+  <header class="container header">
+    <div class="logo">BNBEAN</div>
+    <a href="#buy" class="btn">BUY NOW</a>
+  </header>
+
+  <main>
+    <section class="container hero" id="buy">
+      <!-- Static coins -->
+      <img src="assets/coin1.png" alt="coin" class="coin-top-left" />
+      <img src="assets/coin2.png" alt="coin" class="coin-above-character" />
+
+      <div class="hero-text">
+        <h1>THE HOTTEST <span>MEME</span> ON <span>BINANCE</span></h1>
+        <p>BNBEAN is a minimalist meme coin landing page with a clean character design and a strong brand, enhanced with static coins for a visual accent.</p>
+        <div class="cta-buttons">
+          <a class="btn" href="#ca">CA</a>
+          <a class="btn" href="#telegram">Telegram</a>
+          <a class="btn" href="#dexscreener">Dexscreener</a>
+          <a class="btn" href="#twitter">Twitter</a>
+        </div>
+      </div>
+      <div class="hero-img">
+        <img src="assets/character-hero.png" alt="BNBEAN" />
+      </div>
+    </section>
+
+    <!-- How to Buy Section -->
+    <section class="container section" id="how-to-buy">
+      <h2>How to Buy BNBEAN</h2>
+      <p style="text-align:center;color:var(--sub);max-width:700px;margin:0 auto 20px;">Simple steps to become part of the BNBEAN community — without complexity or technical barriers.</p>
+      <div class="steps" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:24px;margin-top:30px;">
+        <div class="step" style="padding:26px;border:1px solid rgba(255,255,255,.08);border-radius:16px;background:rgba(255,255,255,.03);transition:0.3s ease;">
+          <h3 style="color:var(--brand);margin-bottom:10px;font-size:1.2rem;text-align:center;">1. Install a Wallet</h3>
+          <p style="color:var(--sub);font-size:.95rem;line-height:1.5;text-align:center;">Download <strong>MetaMask</strong> or <strong>Trust Wallet</strong> for browser or mobile.</p>
+        </div>
+        <div class="step" style="padding:26px;border:1px solid rgba(255,255,255,.08);border-radius:16px;background:rgba(255,255,255,.03);transition:0.3s ease;">
+          <h3 style="color:var(--brand);margin-bottom:10px;font-size:1.2rem;text-align:center;">2. Fund with BNB</h3>
+          <p style="color:var(--sub);font-size:.95rem;line-height:1.5;text-align:center;">Buy <strong>BNB</strong> on Binance and transfer it to your wallet.</p>
+        </div>
+        <div class="step" style="padding:26px;border:1px solid rgba(255,255,255,.08);border-radius:16px;background:rgba(255,255,255,.03);transition:0.3s ease;">
+          <h3 style="color:var(--brand);margin-bottom:10px;font-size:1.2rem;text-align:center;">3. Connect to DEX</h3>
+          <p style="color:var(--sub);font-size:.95rem;line-height:1.5;text-align:center;">Go to <strong>PancakeSwap</strong>, choose the <strong>BNB / BNBEAN</strong> pair and connect your wallet.</p>
+        </div>
+        <div class="step" style="padding:26px;border:1px solid rgba(255,255,255,.08);border-radius:16px;background:rgba(255,255,255,.03);transition:0.3s ease;">
+          <h3 style="color:var(--brand);margin-bottom:10px;font-size:1.2rem;text-align:center;">4. Make the Purchase</h3>
+          <p style="color:var(--sub);font-size:.95rem;line-height:1.5;text-align:center;">Enter the amount, click “Swap,” and confirm the transaction — done!</p>
+        </div>
+      </div>
+      <div style="height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,.08),transparent);margin:40px 0"></div>
+    </section>
+
+    <section class="container section gallery-section" id="memes">
+      <h2>Meme Gallery</h2>
+      <div class="gallery-wrapper">
+        <div class="gallery">
+          <img src="assets/memes/meme1.jpg" alt="Meme 1" />
+          <img src="assets/memes/meme2.jpg" alt="Meme 2" />
+          <img src="assets/memes/meme3.jpg" alt="Meme 3" />
+          <img src="assets/memes/meme4.jpg" alt="Meme 4" />
+          <img src="assets/memes/meme5.jpg" alt="Meme 5" />
+          <img src="assets/memes/meme6.jpg" alt="Meme 6" />
+          <img src="assets/memes/meme1.jpg" alt="Meme 1 Duplicate" />
+          <img src="assets/memes/meme2.jpg" alt="Meme 2 Duplicate" />
+          <img src="assets/memes/meme3.jpg" alt="Meme 3 Duplicate" />
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© <span id="year"></span> BNBEAN. All rights reserved.</p>
+    <img src="assets/coin3.png" alt="coin" class="coin-bottom" />
+    <img src="assets/coin2.png" alt="coin" class="coin-bottom-left" />
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
